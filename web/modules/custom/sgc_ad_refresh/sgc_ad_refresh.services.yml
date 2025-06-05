@@ -1,0 +1,7 @@
+services:
+  sgc_ad_refresh.event_subscriber:
+    # Event subscriber class that will listen for the events.
+    class: '\Drupal\sgc_ad_refresh\EventSubscriber\EventSubscriber'
+    # Tagged as an event_subscriber to register this subscriber with the event_dispatch service.
+    tags:
+      - { name: event_subscriber }

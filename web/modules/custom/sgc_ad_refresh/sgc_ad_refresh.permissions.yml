@@ -1,0 +1,4 @@
+#Define the administer permission for the robot config entity.
+"administer sgc_ad_refresh":
+  title: "Administer SGC Ad Refresh"
+  description: Set frequency of ad refreshes.
