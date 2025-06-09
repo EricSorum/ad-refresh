@@ -1,11 +1,12 @@
 <?php
 
-use Drupal\Core\Utility\Drupal;
+// use Drupal\Core\Utility\Drupal;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Component\Utility\Unicode;
 
 /**
  * Renders a list of DFP tags.
+ * @return array
  */
 function get_dfp_tags(): array {
   $entityTypeManager = \Drupal::entityTypeManager();
@@ -20,13 +21,13 @@ function get_dfp_tags(): array {
  */
 
 function sgc_ad_refresh_page_attachments(array &$page) {
-  // $page['#attached']['library'][] =  'sgc_ad_refresh/sgc_ad_refresh';
   $page['#attached']['drupalSettings']['sgc_ad_refresh'] = \Drupal::config('sgc_ad_refresh.settings')->get('items');
 };
 
 
 /**
- * Visibility Pages - allows us to limit the Omeda execution.
+ * Visibility Pages - allows us to limit the JavaScript execution.
+ * @return boolean
  * For example - we don't want to run this on admin pages.
  */
 function _sgc_ad_refresh_visibility_pages($page_exclusions) {
