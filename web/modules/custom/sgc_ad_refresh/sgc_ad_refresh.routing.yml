@@ -1,0 +1,7 @@
+sgc_ad_refresh.admin_settings:
+  path: '/admin/config/services/sgc_ad_refresh'
+  defaults:
+    _form: '\Drupal\sgc_ad_refresh\Form\SettingsForm'
+    _title: 'SGC Ad Refresh'
+  requirements:
+    _permission: 'administer sgc_ad_refresh'

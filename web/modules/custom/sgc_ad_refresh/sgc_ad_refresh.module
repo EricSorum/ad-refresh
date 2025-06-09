@@ -1,0 +1,52 @@
+<?php
+
+use Drupal\Core\Utility\Drupal;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Component\Utility\Unicode;
+
+/**
+ * Renders a list of DFP tags.
+ */
+function get_dfp_tags(): array {
+  $entityTypeManager = \Drupal::entityTypeManager();
+  $dfpTagEntityType = $entityTypeManager->getDefinition('dfp_tag');
+  $query = $entityTypeManager->getStorage('dfp_tag')->getQuery();
+  $dfpTags = $query->execute();
+  return $dfpTags;
+}
+
+/**
+ * Attaches the JavaScript to every page.
+ */
+
+function sgc_ad_refresh_page_attachments(array &$page) {
+  // $page['#attached']['library'][] =  'sgc_ad_refresh/sgc_ad_refresh';
+  $page['#attached']['drupalSettings']['sgc_ad_refresh'] = \Drupal::config('sgc_ad_refresh.settings')->get('items');
+};
+
+
+/**
+ * Visibility Pages - allows us to limit the Omeda execution.
+ * For example - we don't want to run this on admin pages.
+ */
+function _sgc_ad_refresh_visibility_pages($page_exclusions) {
+
+  // Only execute if settings allow it.  Should be all the time.
+  if (!empty($page_exclusions)) {
+
+    $pages = strtolower($page_exclusions);
+    $path = \Drupal::service('path.current')->getPath();
+    $path_alias = strtolower(\Drupal::service('path_alias.manager')->getAliasByPath($path));
+
+    $page_match = \Drupal::service('path.matcher')->matchPath($path_alias, $pages) || (($path != $path_alias) && \Drupal::service('path.matcher')->matchPath($path, $pages));
+
+    if(!$page_match){
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+  }
+
+  return TRUE;
+}

@@ -1,0 +1,6 @@
+sgc_ad_refresh:
+  js:
+    js/ad_refresh.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
