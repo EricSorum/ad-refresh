@@ -33,6 +33,7 @@ class EventSubscriber implements EventSubscriberInterface {
       $config_arr = !empty($config->get('items')) ? json_decode($config->get('items'), true) : [];
       // The status is either 1 or 0, determining if the module is enabled.
       $status = $config_arr['status'] ?? NULL;
+      // Need to use empty() function to check if status is not undefined, and is also set to 1
       if (!empty($status) && $status == 1) {
         // Get the response object from the kernel event.
         $response = $event->getResponse();
