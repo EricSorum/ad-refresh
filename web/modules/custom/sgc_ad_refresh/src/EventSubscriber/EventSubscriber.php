@@ -2,12 +2,10 @@
 
 namespace Drupal\sgc_ad_refresh\EventSubscriber;
 
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use \Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Drupal\Core\Render\AttachmentsInterface;
-use Drupal\node\NodeInterface;
 
 class EventSubscriber implements EventSubscriberInterface {
 
