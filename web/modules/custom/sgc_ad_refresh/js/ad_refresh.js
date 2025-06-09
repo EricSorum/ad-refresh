@@ -8,7 +8,12 @@
         context === document
       ) {
         // Get an object of the ad refresh configuration from Drupal settings.
-        const config = JSON.parse(drupalSettings.sgc_ad_refresh);
+        try {
+          const config = JSON.parse(drupalSettings.sgc_ad_refresh);
+        } catch (e) {
+          console.error('Error parsing SGC Ad Refresh settings:', e);
+          return;
+        }        
         // Get an array of the keys from the object, which are the names of the ad slots.
         const refreshAdSlots = Object.keys(config);
         refreshAdSlots.forEach((ad) => {
