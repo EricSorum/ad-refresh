@@ -2,7 +2,7 @@
 
 (function ($, Drupal) {
   Drupal.behaviors.sgc_ad_refresh = {
-    attach: function (context, settings) {
+    attach: function (context) {
       if (
         // Only run this once.
         context === document
