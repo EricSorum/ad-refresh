@@ -46,6 +46,7 @@ class SettingsForm extends ConfigFormBase {
     if (!empty($items) && $items != NULL) {
       $items = json_decode($items, TRUE);
     }
+    
     $form['status'] = array(
       '#type' => 'select',
       '#options' => array(

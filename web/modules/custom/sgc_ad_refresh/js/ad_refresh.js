@@ -10,12 +10,13 @@
         // Get an object of the ad refresh configuration from Drupal settings.
         try {
           const config = JSON.parse(drupalSettings.sgc_ad_refresh);
-        } catch (e) {
-          console.error('Error parsing SGC Ad Refresh settings:', e);
+        } catch (err) {
+          console.error('Error parsing SGC Ad Refresh settings:', err);
           return;
         }        
         // Get an array of the keys from the object, which are the names of the ad slots.
         const refreshAdSlots = Object.keys(config);
+
         refreshAdSlots.forEach((ad) => {
           // Check if the ad status is active, and if the ad is in googletag.slots
           if (config[ad].status == "1" && googletag.slots[ad]) {

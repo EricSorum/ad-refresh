@@ -24,7 +24,6 @@ function sgc_ad_refresh_page_attachments(array &$page) {
   $page['#attached']['drupalSettings']['sgc_ad_refresh'] = \Drupal::config('sgc_ad_refresh.settings')->get('items');
 };
 
-
 /**
  * Visibility Pages - allows us to limit the JavaScript execution.
  * @return boolean
