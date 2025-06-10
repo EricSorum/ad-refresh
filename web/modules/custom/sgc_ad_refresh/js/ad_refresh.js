@@ -1,6 +1,6 @@
 // Function to assign ad refresh rates according to the interval set in configurations.
 
-(function ($, Drupal) {
+(function (Drupal) {
   Drupal.behaviors.sgc_ad_refresh = {
     attach: function (context) {
       if (
