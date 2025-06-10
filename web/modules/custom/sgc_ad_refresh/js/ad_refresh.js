@@ -22,11 +22,11 @@
           if (config[ad].status == "1" && googletag.slots[ad]) {
             // Assign an setInterval function to each ad slot.
             setInterval(function () {
-              // Check if the window is active and ad exists on page.
+              // Check if the window is active.
               if (!document.hidden) {
                 // Set a refresh command on each ad slot located in googletag.slots
                 googletag
-                  .pubads()
+                  .pubads()  // publisher ad services.
                   .refresh([googletag.slots[ad]], { changeCorrelator: false });
               }
               // Get the assigned interval value from config and convert to seconds.
