@@ -28,8 +28,9 @@ function sgc_ad_refresh_page_attachments(array &$page) {
  * Visibility Pages - allows us to limit the JavaScript execution.
  * @return boolean
  * For example - we don't want to run this on admin pages.
+ * Could use return type hints.
  */
-function _sgc_ad_refresh_visibility_pages($page_exclusions) {
+function _sgc_ad_refresh_visibility_pages(string $page_exclusions) {
 
   // Only execute if settings allow it.  Should be all the time.
   if (!empty($page_exclusions)) {
